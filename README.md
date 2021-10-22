@@ -10,19 +10,19 @@ Simply download the `datasets` folder and use it for training machine learning m
 RezoJDM-SDS is a Semantic DataSet created from RezoJDM. Among wide variety of possibilities, we have only focused on 10 most frequent semantic relations which belong to the ontological and predicative categories of RezoJDM and are more common in semantic linguistic analysis.  Relations with weights less than 50 are treated as negative in our dataset. 
 
 <p align="center">
-  <img src="https://github.com/mehdi-mirzapour/RezoJDM-SDS/blob/main/resources/Table_1.jpg" width="500" height="300">
+  <img src="https://github.com/mehdi-mirzapour/RezoJDM-SDS/blob/main/resources/pics/Table_1.jpg" width="500" height="300">
 </p>
 
 We have selected reliable relations with weights greater than 50 in RezoJDM. This constraint guarantees to select positive relations that have been validated more frequently by different players in the JDM game. 
 
 <p align="center">
-  <img src="https://github.com/mehdi-mirzapour/RezoJDM-SDS/blob/main/resources/Table_2.jpg" width="500" height="350">
+  <img src="https://github.com/mehdi-mirzapour/RezoJDM-SDS/blob/main/resources/pics/Table_2.jpg" width="500" height="350">
 </p>
 
 The descriptions and examples of the relation types are illustrated in tables. RezoJDM-SDS is gained by randomly splitting the initial dataset into two train and test samples (80\% and 20\%).  
 
 <p align="center">
-  <img src="https://github.com/mehdi-mirzapour/RezoJDM-SDS/blob/main/resources/Table_3.jpg" width="500" height="150">
+  <img src="https://github.com/mehdi-mirzapour/RezoJDM-SDS/blob/main/resources/pics/Table_3.jpg" width="500" height="150">
 </p>
 
 ## Citations
