@@ -7,7 +7,7 @@ from openke.data import TrainDataLoader, TestDataLoader
 
 # dataloader for training
 train_dataloader = TrainDataLoader(
-	in_path = "../benchmarks/RezoJDM-SDS/", 
+	in_path = "./benchmarks/RezoJDM-SDS/", 
 	batch_size = 2000,
 	threads = 8,
 	sampling_mode = "cross", 
@@ -18,7 +18,7 @@ train_dataloader = TrainDataLoader(
 )
 
 # dataloader for test
-test_dataloader = TestDataLoader("../benchmarks/RezoJDM-SDS/", "link")
+test_dataloader = TestDataLoader("./benchmarks/RezoJDM-SDS/", "link")
 
 # define the model
 rotate = RotatE(
