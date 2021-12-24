@@ -3,7 +3,16 @@ This repository introduces RezoJDM16K a French Knowledge Graph Dataset with 53 s
 
 ## Instruction:  
 
-Simply download the `./benchmarks/RezoJDM16K` folder and use it for Knowledge Graph Emebedding Models available in OpenKE. Run jupyter notebook `./src/4-OpenKE_2_KGE_Models.ipynb` which is created for this purpose.
+Simply download the `./benchmarks/RezoJDM16K` folder and use it for Knowledge Graph Emebedding Models available in OpenKE. Run jupyter notebook `./src/4-OpenKE_2_KGE_Models.ipynb` which is created for this purpose.  
+
+## Description of Source Notebooks
+
+The source jupyter notebooks in this repository is for recreation the dataset with RezoJDM dump: 
+- 1-Dump2CSVs.ipynb : converts RezoJDM dumps to CSV format files with simple preliminary filters.
+- 2-CSV2Triplets.ipynb : converts CSV format files into triplets.
+- 3-Triplets2OpenKE.ipynb : convert triplets to OpenKE graph format.
+- 4-OpenKE_2_KGE_Models.ipynb : use OpenKE graphs for trainnig with different knowledge graph embedding models.  
+
 
 ## Performance:  
 
