@@ -1,44 +1,43 @@
 import openke
 from openke.config import Trainer, Tester
 from openke.module.model import DistMult
-from openke.module.loss import SigmoidLoss
+from openke.module.loss import SoftplusLoss
 from openke.module.strategy import NegativeSampling
 from openke.data import TrainDataLoader, TestDataLoader
 
 # dataloader for training
 train_dataloader = TrainDataLoader(
-	in_path = "./benchmarks/RezoJDM-SDS/", 
-	batch_size = 2000,
-	threads = 8,
-	sampling_mode = "cross", 
-	bern_flag = 0, 
+	in_path = "./benchmarks/RezoJDM16K/", 
+	nbatches = 100,
+	threads = 8, 
+	sampling_mode = "normal", 
+	bern_flag = 1, 
 	filter_flag = 1, 
-	neg_ent = 64,
+	neg_ent = 25,
 	neg_rel = 0
 )
 
 # dataloader for test
-test_dataloader = TestDataLoader("./benchmarks/RezoJDM-SDS/", "link")
+test_dataloader = TestDataLoader("./benchmarks/RezoJDM16K/", "link")
 
 # define the model
 distmult = DistMult(
 	ent_tot = train_dataloader.get_ent_tot(),
 	rel_tot = train_dataloader.get_rel_tot(),
-	dim = 1024,
-	margin = 200.0,
-	epsilon = 2.0
+	dim = 200
 )
 
 # define the loss function
 model = NegativeSampling(
 	model = distmult, 
-	loss = SigmoidLoss(adv_temperature = 0.5),
+	loss = SoftplusLoss(),
 	batch_size = train_dataloader.get_batch_size(), 
-	l3_regul_rate = 0.000005
+	regul_rate = 1.0
 )
 
+
 # train the model
-trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 0.002, use_gpu = True, opt_method = "adam")
+trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 0.5, use_gpu = True, opt_method = "adagrad")
 trainer.run()
 distmult.save_checkpoint('./checkpoint/distmult.ckpt')
 

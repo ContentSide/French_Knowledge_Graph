@@ -1,13 +1,13 @@
 import openke
 from openke.config import Trainer, Tester
-from openke.module.model import Analogy
+from openke.module.model import SimplE
 from openke.module.loss import SoftplusLoss
 from openke.module.strategy import NegativeSampling
 from openke.data import TrainDataLoader, TestDataLoader
 
 # dataloader for training
 train_dataloader = TrainDataLoader(
-	in_path = "./benchmarks/RezoJDM-SDS/", 
+	in_path = "./benchmarks/RezoJDM16K/", 
 	nbatches = 100,
 	threads = 8, 
 	sampling_mode = "normal", 
@@ -18,10 +18,10 @@ train_dataloader = TrainDataLoader(
 )
 
 # dataloader for test
-test_dataloader = TestDataLoader("./benchmarks/RezoJDM-SDS/", "link")
+test_dataloader = TestDataLoader("./benchmarks/RezoJDM16K/", "link")
 
 # define the model
-analogy = Analogy(
+simple = SimplE(
 	ent_tot = train_dataloader.get_ent_tot(),
 	rel_tot = train_dataloader.get_rel_tot(),
 	dim = 200
@@ -29,18 +29,19 @@ analogy = Analogy(
 
 # define the loss function
 model = NegativeSampling(
-	model = analogy, 
+	model = simple, 
 	loss = SoftplusLoss(),
 	batch_size = train_dataloader.get_batch_size(), 
 	regul_rate = 1.0
 )
 
+
 # train the model
 trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 0.5, use_gpu = True, opt_method = "adagrad")
 trainer.run()
-analogy.save_checkpoint('./checkpoint/analogy.ckpt')
+simple.save_checkpoint('./checkpoint/simple.ckpt')
 
 # test the model
-analogy.load_checkpoint('./checkpoint/analogy.ckpt')
-tester = Tester(model = analogy, data_loader = test_dataloader, use_gpu = True)
+simple.load_checkpoint('./checkpoint/simple.ckpt')
+tester = Tester(model = simple, data_loader = test_dataloader, use_gpu = True)
 tester.run_link_prediction(type_constrain = False)

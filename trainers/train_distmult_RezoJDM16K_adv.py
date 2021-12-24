@@ -1,13 +1,13 @@
 import openke
 from openke.config import Trainer, Tester
-from openke.module.model import TransE
+from openke.module.model import DistMult
 from openke.module.loss import SigmoidLoss
 from openke.module.strategy import NegativeSampling
 from openke.data import TrainDataLoader, TestDataLoader
 
 # dataloader for training
 train_dataloader = TrainDataLoader(
-	in_path = "./benchmarks/RezoJDM-SDS/", 
+	in_path = "./benchmarks/RezoJDM16K/", 
 	batch_size = 2000,
 	threads = 8,
 	sampling_mode = "cross", 
@@ -18,32 +18,31 @@ train_dataloader = TrainDataLoader(
 )
 
 # dataloader for test
-test_dataloader = TestDataLoader("./benchmarks/RezoJDM-SDS/", "link")
+test_dataloader = TestDataLoader("./benchmarks/RezoJDM16K/", "link")
 
 # define the model
-transe = TransE(
+distmult = DistMult(
 	ent_tot = train_dataloader.get_ent_tot(),
 	rel_tot = train_dataloader.get_rel_tot(),
-	dim = 1024, 
-	p_norm = 1,
-	norm_flag = False,
-	margin = 6.0)
-
+	dim = 1024,
+	margin = 200.0,
+	epsilon = 2.0
+)
 
 # define the loss function
 model = NegativeSampling(
-	model = transe, 
-	loss = SigmoidLoss(adv_temperature = 1),
+	model = distmult, 
+	loss = SigmoidLoss(adv_temperature = 0.5),
 	batch_size = train_dataloader.get_batch_size(), 
-	regul_rate = 0.0
+	l3_regul_rate = 0.000005
 )
 
 # train the model
-trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 2e-5, use_gpu = True, opt_method = "adam")
+trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 0.002, use_gpu = True, opt_method = "adam")
 trainer.run()
-transe.save_checkpoint('./checkpoint/transe_2.ckpt')
+distmult.save_checkpoint('./checkpoint/distmult.ckpt')
 
 # test the model
-transe.load_checkpoint('./checkpoint/transe_2.ckpt')
-tester = Tester(model = transe, data_loader = test_dataloader, use_gpu = True)
+distmult.load_checkpoint('./checkpoint/distmult.ckpt')
+tester = Tester(model = distmult, data_loader = test_dataloader, use_gpu = True)
 tester.run_link_prediction(type_constrain = False)

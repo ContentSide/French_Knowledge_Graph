@@ -1,13 +1,13 @@
 import openke
 from openke.config import Trainer, Tester
-from openke.module.model import TransD
+from openke.module.model import TransH
 from openke.module.loss import MarginLoss
 from openke.module.strategy import NegativeSampling
 from openke.data import TrainDataLoader, TestDataLoader
 
 # dataloader for training
 train_dataloader = TrainDataLoader(
-	in_path = "./benchmarks/RezoJDM-SDS/", 
+	in_path = "./benchmarks/RezoJDM16K/", 
 	nbatches = 100,
 	threads = 8, 
 	sampling_mode = "normal", 
@@ -17,31 +17,30 @@ train_dataloader = TrainDataLoader(
 	neg_rel = 0)
 
 # dataloader for test
-test_dataloader = TestDataLoader("./benchmarks/RezoJDM-SDS/", "link")
+test_dataloader = TestDataLoader("./benchmarks/RezoJDM16K/", "link")
 
 # define the model
-transd = TransD(
+transh = TransH(
 	ent_tot = train_dataloader.get_ent_tot(),
 	rel_tot = train_dataloader.get_rel_tot(),
-	dim_e = 200, 
-	dim_r = 200, 
+	dim = 200, 
 	p_norm = 1, 
 	norm_flag = True)
 
-
 # define the loss function
 model = NegativeSampling(
-	model = transd, 
+	model = transh, 
 	loss = MarginLoss(margin = 4.0),
 	batch_size = train_dataloader.get_batch_size()
 )
 
+
 # train the model
-trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 1.0, use_gpu = True)
+trainer = Trainer(model = model, data_loader = train_dataloader, train_times = 50, alpha = 0.5, use_gpu = True)
 trainer.run()
-transd.save_checkpoint('./checkpoint/transd.ckpt')
+transh.save_checkpoint('./checkpoint/transh.ckpt')
 
 # test the model
-transd.load_checkpoint('./checkpoint/transd.ckpt')
-tester = Tester(model = transd, data_loader = test_dataloader, use_gpu = True)
+transh.load_checkpoint('./checkpoint/transh.ckpt')
+tester = Tester(model = transh, data_loader = test_dataloader, use_gpu = True)
 tester.run_link_prediction(type_constrain = False)
