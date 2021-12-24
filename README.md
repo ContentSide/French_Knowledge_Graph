@@ -20,17 +20,18 @@ Here are the performance of different Knowledge Graph Embeddings Models run on R
 |RotatE (+adv)	|0.583	|0.565	|0.522|0.571|0.533|
 
 
-## Citations
+## RezoJDM16K Dataset Citation
 ```bibtex
 @inproceedings{mirzapour2022,
   title={Introducing RezoJDM Knowledge Graph DataSet for Link Prediction},
   author={Mehdi Mirzapour, Waleed Ragheb, Mohammad Javad Saeedizade,Kevin Cousot, Helene Jacquenet, Lawrence Carbon, Mathieu Lafourcade},
+  booktitle={forthcoming},
   year={2022}
 }
 ```
 
 
-## Citations
+## RezoJDM Citations
 ```bibtex
 @inproceedings{lafourcade2007making,
   title={Making people play for Lexical Acquisition with the JeuxDeMots prototype},
