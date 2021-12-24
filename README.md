@@ -52,5 +52,5 @@ Here are the performance of different Knowledge Graph Embeddings Models run on R
 ```
 
 ### License
-RezoJDM-SDS is released under the MIT license.
+`RezoJDM16K` is released under the MIT license.
 
