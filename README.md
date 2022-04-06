@@ -23,9 +23,9 @@ Model			|	MRR  |	MR	|	Hit@10	| Hit@3| Hit@1|
 |:-:		|:-:	|:-:  |:-:  |:-:  |:-:  |
 |TransE	|0.179	|203.31	|0.432|0.242|0.041|
 |TransH	|0.218	|177.12	|0.498|0.291|0.069|
-|TransD	|0.216	|170.68	|0.500|0.287|0.066|
+|TransD	|0.216	|**170.68**	|0.500|0.287|0.066|
 |DistMult	|0.220	|194.47	|0.445|0.252|0.109|
-|ComplEx	|0.253	|201.58	|0.533|0.304|0.117|
+|ComplEx	|**0.253**	|201.58	|**0.533**|**0.304**|**0.117**|
 
 
 
@@ -39,8 +39,8 @@ Here is the performance ((Hit@10)) of the different Knowledge Graph Embeddings M
 |TransH	|0.474	|0.507	|0.490|-|-|
 |TransD	|0.470	|0.508	|0.487|-|-|
 |DistMult	|0.424	|0.479	|0.419|0.49|0.419|
-|ComplEx	|0.528	|0.485	|0.426|0.51|0.428|
-|RotatE (+adv)	|0.583	|0.565	|0.522|0.571|0.533|
+|ComplEx	|0.528	|0.485	|0.426|0.510|0.428|
+|RotatE <sup>[*](#notInOrigPaper)</sup>	|**0.583**	|**0.565**	|**0.522**|**0.571**|**0.533**|
 
 
 ## RezoJDM16K Dataset Citation
@@ -68,3 +68,6 @@ Here is the performance ((Hit@10)) of the different Knowledge Graph Embeddings M
 ### License
 `RezoJDM16K` is released under the MIT license.
 
+
+
+<a name="notInOrigPaper">1</a>: This results were not reported in the original paper
