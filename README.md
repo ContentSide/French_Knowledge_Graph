@@ -17,7 +17,7 @@ The Jupiter notebooks in `./src` are for recreation the dataset with RezoJDM dum
 
 ## Performance:  
 
-Here is the performance of knowledge graph embedding models for RezoJDM16k considering the different evaluation metrics [1](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9220143)  
+Here is the performance of knowledge graph embedding models for RezoJDM16k considering the different evaluation metrics \[[1](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9220143)\]  
 
 Model			|	MRR  |	MR	|	Hit@10	| Hit@3| Hit@1|
 |:-:		|:-:	|:-:  |:-:  |:-:  |:-:  |
@@ -33,7 +33,7 @@ Model			|	MRR  |	MR	|	Hit@10	| Hit@3| Hit@1|
 Here is the performance ((Hit@10)) of the different Knowledge Graph Embeddings Models run on RezoJDM16K compared to other English datasets. 
 
 
-|Model			|	RezoJDM16k  |	WN18RR	|	FB15k237	| WN18RR [2](https://aclanthology.org/D15-1174.pdf)| FB15k237  [2](https://aclanthology.org/D15-1174.pdf)|
+|Model			|	RezoJDM16k  |	WN18RR	|	FB15k237	| WN18RR \[[2](https://aclanthology.org/D15-1174.pdf)\]| FB15k237  \[[2](https://aclanthology.org/D15-1174.pdf)\]|
 |:-:		|:-:	|:-:  |:-:  |:-:  |:-:  |
 |TransE	|0.422	|0.512	|0.476|0.501|0.486|
 |TransH	|0.474	|0.507	|0.490|-|-|
