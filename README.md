@@ -71,4 +71,4 @@ Here is the performance ((Hit@10)) of the different Knowledge Graph Embeddings M
 
 ---
 
-<a name="notInOrigPaper">*</a>: This results were not reported in the original paper
+<a name="notInOrigPaper">*</a> These results were not reported in the original paper
