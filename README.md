@@ -69,5 +69,6 @@ Here is the performance ((Hit@10)) of the different Knowledge Graph Embeddings M
 `RezoJDM16K` is released under the MIT license.
 
 
+---
 
-<a name="notInOrigPaper">1</a>: This results were not reported in the original paper
+<a name="notInOrigPaper">*</a>: This results were not reported in the original paper
