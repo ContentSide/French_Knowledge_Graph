@@ -1,4 +1,4 @@
-# RezoJDM16k (French Knowledge Graph DataSet)
+# RezoJDM16k (A French Knowledge Graph DataSet)
 This repository introduces RezoJDM16K a French Knowledge Graph Dataset with 53 semantic relations created from RezoJDM. Different graph embeddings have been gained from this dataset which are available for semantic link prediction tasks.
 
 ## Instruction:  
@@ -19,7 +19,8 @@ The Jupiter notebooks in `./src` are for recreation the dataset with RezoJDM dum
 
 Here is the performance of knowledge graph embedding models for RezoJDM16k considering the different evaluation metrics \[[1](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9220143)\]  
 
-Model			|	MRR  |	MR	|	Hit@10	| Hit@3| Hit@1|
+
+Model			|	MRR  |	MR	|	Hits@10	| Hits@3| Hits@1|
 |:-:		|:-:	|:-:  |:-:  |:-:  |:-:  |
 |TransE	|0.179	|203.31	|0.432|0.242|0.041|
 |TransH	|0.218	|177.12	|0.498|0.291|0.069|
@@ -30,7 +31,7 @@ Model			|	MRR  |	MR	|	Hit@10	| Hit@3| Hit@1|
 
 
 
-Here is the performance ((Hit@10)) of the different Knowledge Graph Embeddings Models run on RezoJDM16K compared to other English datasets. 
+Here is the performance (Hits@10) of the different Knowledge Graph Embeddings Models run on RezoJDM16K compared to other English datasets.  
 
 
 |Model			|	RezoJDM16k  |	WN18RR	|	FB15k237	| WN18RR \[[2](https://aclanthology.org/D15-1174.pdf)\]| FB15k237  \[[2](https://aclanthology.org/D15-1174.pdf)\]|
