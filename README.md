@@ -1,4 +1,4 @@
-# RezoJDM16k (French Knowledge Graph DataSet)
+# RezoJDM16k (A French Knowledge Graph DataSet)
 This repository introduces RezoJDM16K a French Knowledge Graph Dataset with 53 semantic relations created from RezoJDM. Different graph embeddings have been gained from this dataset which are available for semantic link prediction tasks.
 
 ## Instruction:  
