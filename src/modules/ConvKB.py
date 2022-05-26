@@ -34,9 +34,11 @@ class ConvKB(Model):
 
 
     def _calc(self, h, t, r):
+        print(h.shape, r.shape, t.shape)
         h = h.unsqueeze(1) # bs x 1 x dim
         r = r.unsqueeze(1)
         t = t.unsqueeze(1)
+        print(h.shape, r.shape, t.shape)
 
         conv_input = torch.cat([h, r, t], 1)  # bs x 3 x dim
         conv_input = conv_input.transpose(1, 2)
