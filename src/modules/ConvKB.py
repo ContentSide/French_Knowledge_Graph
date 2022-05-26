@@ -55,7 +55,7 @@ class ConvKB(Model):
         return -score
 
     def loss(self, score, regul, batch_y):
-        return torch.mean(self.criterion(score * batch_y)) + self.config.lmbda * regul
+        return self.config.lmbda * regul
 
 
     def forward(self, data):
