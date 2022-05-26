@@ -59,10 +59,11 @@ class ConvKB(Model):
 
 
     def forward(self, data):
-        print("batch_x", batch_h.shape, batch_r.shape)
         batch_h = data['batch_h']
         batch_t = data['batch_t']
         batch_r = data['batch_r']
+        print("batch_x", batch_h.shape, batch_r.shape)
+
 
         h = self.ent_embeddings(batch_h)
         t = self.ent_embeddings(batch_t)
