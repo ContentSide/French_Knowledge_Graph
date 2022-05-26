@@ -25,8 +25,6 @@ class ConvKB(Model):
         self.fc_layer = nn.Linear((self.hidden_size - self.kernel_size + 1) * self.out_channels, 1, bias=False)
 
         self.criterion = nn.Softplus()
-        self.init_parameters()
-
 
         nn.init.xavier_uniform_(self.ent_embeddings.weight.data)
         nn.init.xavier_uniform_(self.rel_embeddings.weight.data)		
