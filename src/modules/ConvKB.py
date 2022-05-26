@@ -48,7 +48,7 @@ class ConvKB(Model):
         out_conv = self.conv_layer(conv_input)
         out_conv = self.conv2_bn(out_conv)
         out_conv = self.non_linearity(out_conv)
-        out_conv = out_conv.view(-1, (self.hidden_size - self.kernel_size + 1) * self.config.out_channels)
+        out_conv = out_conv.view(-1, (self.hidden_size - self.kernel_size + 1) * self.out_channels)
         input_fc = self.dropout(out_conv)
         score = self.fc_layer(input_fc).view(-1)
 
