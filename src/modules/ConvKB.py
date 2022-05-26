@@ -40,7 +40,7 @@ class ConvKB(Model):
         t = t.unsqueeze(1)
         print(h.shape, r.shape, t.shape)
 
-        conv_input = torch.cat([h, r, t], 1)  # bs x 3 x dim
+        conv_input = torch.cat([h, r[:h.shape[0]], t], 1)  # bs x 3 x dim
         conv_input = conv_input.transpose(1, 2)
         # To make tensor of size 4, where second dim is for input channels
         conv_input = conv_input.unsqueeze(1)
