@@ -55,7 +55,7 @@ class ConvKB(Model):
         return -score
 
     def loss(self, score, regul, batch_y):
-        return self.config.lmbda * regul
+        return 0.4 * regul
 
 
     def forward(self, data):
