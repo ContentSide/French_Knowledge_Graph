@@ -59,6 +59,7 @@ class ConvKB(Model):
 
 
     def forward(self, data):
+        print("batch_x", batch_h.shape, batch_r.shape)
         batch_h = data['batch_h']
         batch_t = data['batch_t']
         batch_r = data['batch_r']
@@ -66,6 +67,8 @@ class ConvKB(Model):
         h = self.ent_embeddings(batch_h)
         t = self.ent_embeddings(batch_t)
         r = self.rel_embeddings(batch_r)
+        print("batch", h.shape, r.shape)
+
 
         score = self._calc(h, r, t)
 
