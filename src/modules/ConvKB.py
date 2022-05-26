@@ -48,14 +48,14 @@ class ConvKB(Model):
         out_conv = self.conv_layer(conv_input)
         out_conv = self.conv2_bn(out_conv)
         out_conv = self.non_linearity(out_conv)
-        out_conv = out_conv.view(-1, (self.hidden_size - self.kernel_size + 1) * self.out_channels)
+        out_conv = out_conv.view(-1, (self.hidden_size - self.kernel_size + 1) * self.config.out_channels)
         input_fc = self.dropout(out_conv)
         score = self.fc_layer(input_fc).view(-1)
 
         return -score
 
-    def loss(self, score, regul):
-        return torch.mean(self.criterion(score * self.batch_y)) + self.config.lmbda * regul
+    def loss(self, score, regul, batch_y):
+        return torch.mean(self.criterion(score * batch_y)) + self.config.lmbda * regul
 
 
     def forward(self, data):
@@ -80,7 +80,7 @@ class ConvKB(Model):
         for W in self.fc_layer.parameters():
             l2_reg = l2_reg + W.norm(2)
 
-        return self.loss(score, l2_reg)
+        return self.loss(score, l2_reg, data['batch_y'])
 
 
     def predict(self, data):
